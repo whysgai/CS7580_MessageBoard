@@ -6,7 +6,7 @@ import thunkMiddleware from "redux-thunk";
 
 export const rootReducer = combineReducers({
     loginReducer,
-    userReducer
+    user: userReducer
     // todos: todosReducer
 })
 

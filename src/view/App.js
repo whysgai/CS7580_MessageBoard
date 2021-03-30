@@ -8,7 +8,7 @@ import { validateUser } from "../redux/actions/loginActions"
 function App() {
     const dispatch = useDispatch();
     const loginState = useSelector(state => state.loginReducer.loginState);
-    const user = useSelector(state => state.userReducer.user);
+    const user = useSelector(state => state.user);
 
     useEffect(() => {
         if (loginState === LOGIN_STATE.LOGGED_OUT) {
@@ -18,6 +18,9 @@ function App() {
 
     return (
         <div className="App">
+            {/* {console.log("Current state", state)} */}
+            {console.log("Login state", loginState)}
+            {console.log("Current user", user)}
             <p>hi { user !== null && user !== undefined ? user.id : "" }</p>
             <ThreadList />
         </div>
