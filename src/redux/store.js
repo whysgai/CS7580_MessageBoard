@@ -1,6 +1,13 @@
-import { createStore } from "redux";
-import {INITIAL_STATE, LOGIN_STATE} from "./storeConstants";
+import {createStore, combineReducers, applyMiddleware} from "redux";
+import {loginReducer} from "./reducers/loginReducer";
+import {userReducer} from "./reducers/userReducer";
+// import {todosReducer} from "./reducers/todos";
+import thunkMiddleware from "redux-thunk";
 
-const rootReducer = (state = INITIAL_STATE, action) => {};
+export const rootReducer = combineReducers({
+    loginReducer,
+    userReducer
+    // todos: todosReducer
+})
 
-export default createStore(rootReducer);
+export default createStore(rootReducer, applyMiddleware(thunkMiddleware));
