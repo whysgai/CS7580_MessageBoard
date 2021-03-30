@@ -1,14 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ThreadList from '../components/ThreadList';
+import ThreadComponent from "../components/ThreadComponent";
 import '../styles/App.css';
-import { LOGIN_STATE } from "../redux/storeConstants";
+import { LOGIN_STATE, VIEW_STATE } from "../redux/storeConstants";
 import { validateUser } from "../redux/actions/loginActions"
 
 function App() {
     const dispatch = useDispatch();
     const loginState = useSelector(state => state.loginReducer.loginState);
     const user = useSelector(state => state.user);
+    const view = useSelector(state => state.view);
 
     useEffect(() => {
         if (loginState === LOGIN_STATE.LOGGED_OUT) {
@@ -22,7 +24,18 @@ function App() {
             {console.log("Login state", loginState)}
             {console.log("Current user", user)}
             <p>hi { user !== null && user !== undefined ? user.id : "" }</p>
-            <ThreadList />
+            {
+                view === VIEW_STATE.THREAD_LIST ?
+                    <ThreadList />
+                    :
+                    <>{
+                        view === VIEW_STATE.SINGLE_THREAD ?
+                            <ThreadComponent />
+                            :
+                            <p>Error: view set to {view}</p>
+                    }</>
+            }
+            
         </div>
     );
 }

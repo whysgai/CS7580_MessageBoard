@@ -1,11 +1,14 @@
 import PropTypes from "prop-types";
 
 const ThreadSnippet = (props) => {
+
     return (
         <div>
-            <p>Title: {props.thread.title}</p>
+            {console.log("thread", props.thread)}
+            <a href="#" >Title: {props.thread.title}</a>
             <p>Author: {props.thread.author}</p>
             <p>Body: {props.thread.body}</p>
+            {/* <p>Created: {props.thread.timestamp.seconds}</p> */}
         </div>
     );
 };
