@@ -44,6 +44,6 @@ export const validateUser = (username, password) => {
             .catch(error => {
                 console.log("Login error", error);
                 dispatch(loginNetworkError());
-            })
-    }
+            });
+    };
 };

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ThreadList from '../components/ThreadList';
 import '../styles/App.css';
-import {LOGIN_STATE} from "../redux/storeConstants";
+import { LOGIN_STATE } from "../redux/storeConstants";
 import { validateUser } from "../redux/actions/loginActions"
 
 function App() {
