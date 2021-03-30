@@ -9,6 +9,7 @@ var firebaseConfig = {
     storageBucket: "cs7580-a5-message-board.appspot.com",
     messagingSenderId: "575151180871",
     appId: "1:575151180871:web:d7469bf4bfca3e2c927562"
-    };
+};
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
