@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { LOGIN_STATE } from "../redux/storeConstants";
 import { readThreadByID } from "../redux/actions/threadActions";
+import Reply from "./Reply";
 
 const ThreadComponent = () => {
     const dispatch = useDispatch();
@@ -19,9 +20,16 @@ const ThreadComponent = () => {
         <>            
             {
                 threads.filter(thread => threadId === thread.id).map((thread, index) => 
-                    // <ThreadSnippet key={index} thread={thread}/>
-                    <p>Just one thread{console.log("Single thread view", thread)}</p>
-                    
+                    <>
+                        <p>Title: {thread.title}</p>
+                        <p>Author: {thread.author}</p>
+                        <p>Body: {thread.body}</p>
+                        {
+                            thread.replies.map((reply, index) =>
+                                <Reply key={index} reply={reply} />
+                            )
+                        }
+                    </>
                 )
             }
         </>
