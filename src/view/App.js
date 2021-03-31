@@ -10,7 +10,7 @@ function App() {
     const dispatch = useDispatch();
     const loginState = useSelector(state => state.loginReducer.loginState);
     const user = useSelector(state => state.user);
-    const view = useSelector(state => state.view);
+    const view = useSelector(state => state.viewReducer.view);
 
     useEffect(() => {
         if (loginState === LOGIN_STATE.LOGGED_OUT) {
@@ -23,6 +23,7 @@ function App() {
             {/* {console.log("Current state", state)} */}
             {console.log("Login state", loginState)}
             {console.log("Current user", user)}
+            {console.log("Current view", view)}
             <p>hi { user !== null && user !== undefined ? user.id : "" }</p>
             {
                 view === VIEW_STATE.THREAD_LIST ?
