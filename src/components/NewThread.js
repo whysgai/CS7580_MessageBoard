@@ -15,7 +15,6 @@ const NewThread = () => {
         setTags(newTags);
     }, [body]);
 
-
     const postThread = () => {
         let newThread = {
             author : user.id,
@@ -27,8 +26,6 @@ const NewThread = () => {
         }
         dispatch(createThread(newThread));
     };
-
-
 
     return (
         <>

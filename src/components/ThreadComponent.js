@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { LOGIN_STATE } from "../redux/storeConstants";
 import { readThreadByID } from "../redux/actions/threadActions";
 import Reply from "./Reply";
+import NewReply from "./NewReply";
 
 const ThreadComponent = () => {
     const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const ThreadComponent = () => {
                         <p>Title: {thread.title}</p>
                         <p>Author: {thread.author}</p>
                         <p>Body: {thread.body}</p>
+                        <NewReply threadId={thread.id}/>
                         {
                             thread.replies.map((reply, index) =>
                                 <Reply key={index} reply={reply} />
