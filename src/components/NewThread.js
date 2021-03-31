@@ -1,5 +1,6 @@
-import {useState, useRef, useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createThread } from "../redux/actions/threadActions";
 
 const NewThread = () => {
     const [title, setTitle] = useState("");
@@ -24,7 +25,7 @@ const NewThread = () => {
             timestamp : Date.now(),
             title : title
         }
-        console.log("New thread", newThread);
+        dispatch(createThread(newThread));
     };
 
 

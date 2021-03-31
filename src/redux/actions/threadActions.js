@@ -11,6 +11,10 @@ const loadThreads = threads => ({
     }
 });
 
+export const stampTime = () => {
+
+};
+
 export const readAllThreads = () => {
     console.log("Reading threads from server");
     return dispatch => {
@@ -53,4 +57,22 @@ export const readThreadByID = (id) => {
                 // dispatch(loginNetworkError());
             });
     };
+};
+
+export const createThread = (thread) => {
+    console.log("Posting thread to server");
+    const threads = store.getState().threads;
+    return dispatch => {
+        database.collection("threads")
+            .add(thread)
+            .then(newThread => {
+                let newThreads = threads.concat([{
+                    ...thread,
+                    id:  newThread.id
+                }])
+                console.log("Updated threads after add", newThreads);
+                dispatch(loadThreads(threads));
+            })
+            .catch(error => console.log(error));
+    }
 };
