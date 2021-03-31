@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { createReply } from "../redux/actions/threadActions";
 
 const NewReply = (props) => {
     const [body, setBody] = useState("");
@@ -13,7 +14,7 @@ const NewReply = (props) => {
             body : body,
             timestamp : Date.now()
         }
-        //dispatch(createThread(props.threadId, newThread));
+        dispatch(createReply(props.threadId, newThread));
     };
 
     return (

@@ -1,13 +1,21 @@
-import { READ_THREADS } from "../actionConstants";
+import { READ_THREADS, ADD_REPLY } from "../actionConstants";
 import store from "../store";
 import firebase from "../../fbConfig";
 
 const database = firebase.firestore();
 
-const loadThreads = threads => ({
+const readThreads = threads => ({
     type: READ_THREADS,
     payload: {
         threads
+    }
+});
+
+const addReply = (threadId, reply) => ({
+    type: ADD_REPLY,
+    payload: {
+        threadId,
+        reply
     }
 });
 
@@ -28,7 +36,7 @@ export const readAllThreads = () => {
                     })
                 })
                 console.log("Threads retreved from server", threads);
-                dispatch(loadThreads(threads));
+                dispatch(readThreads(threads));
             })
             .catch(error => {
                 console.log("Login error", error);
@@ -50,7 +58,7 @@ export const readThreadByID = (id) => {
                     })
                 })
                 console.log("Threads retreved from server", threads);
-                dispatch(loadThreads(threads));
+                dispatch(readThreads(threads));
             })
             .catch(error => {
                 console.log("Login error", error);
@@ -71,8 +79,24 @@ export const createThread = (thread) => {
                     id:  newThread.id
                 }])
                 console.log("Updated threads after add", newThreads);
-                dispatch(loadThreads(threads));
+                dispatch(readThreads(threads));
             })
             .catch(error => console.log(error));
-    }
+    };
+};
+
+export const createReply = (threadId, reply) => {
+    return dispatch => {
+        console.log("Adding reply", reply);
+        database.collection("threads").doc(threadId)
+            .update({
+                replies : firebase.firestore.FieldValue.arrayUnion(reply)
+            })
+            .then(() => {
+                dispatch(addReply(threadId, reply));
+            })
+            .catch(error => {
+                console.log("Could not add the reply");
+            });
+    };
 };
