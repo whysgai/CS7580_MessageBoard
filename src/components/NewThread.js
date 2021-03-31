@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createThread } from "../redux/actions/threadActions";
 
@@ -25,6 +25,9 @@ const NewThread = () => {
             title : title
         }
         dispatch(createThread(newThread));
+        setTitle("");
+        setBody("");
+        setTags([]);
     };
 
     return (

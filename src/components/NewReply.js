@@ -15,6 +15,7 @@ const NewReply = (props) => {
             timestamp : Date.now()
         }
         dispatch(createReply(props.threadId, newThread));
+        setBody("");
     };
 
     return (
