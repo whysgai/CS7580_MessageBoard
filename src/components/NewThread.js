@@ -6,16 +6,25 @@ const NewThread = () => {
     const [body, setBody] = useState("");
     const [tags, setTags] = useState([]);
 
+    const user = useSelector(state => state.user);
     const dispatch = useDispatch();
 
     useEffect(() => {
         let newTags = body.split(" ").filter(word => word.charAt(0) === "#");
-        console.log("New tags:", newTags);
+        setTags(newTags);
     }, [body]);
 
 
     const postThread = () => {
-        
+        let newThread = {
+            author : user.id,
+            body : body,
+            replies : [],
+            tags : tags,
+            timestamp : Date.now(),
+            title : title
+        }
+        console.log("New thread", newThread);
     };
 
 
@@ -36,7 +45,7 @@ const NewThread = () => {
                     />
                     <label for="newThreadBody">Thread content</label>
                 </div>
-                <button className="btn btn-success">Post</button>
+                <button className="btn btn-success" onClick={() => postThread()}>Post</button>
             </div>
         </>
     );
