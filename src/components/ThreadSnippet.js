@@ -14,12 +14,30 @@ const ThreadSnippet = (props) => {
         return timeStamp;
     };
 
+    const parseTags = (rawBody) => {
+        let parsedBody =  rawBody.split(" ").map(word => 
+            word.charAt(0) === "#" ?
+                <a className="tag" href="#">{word}</a>
+                :
+                word        
+        );
+        let rtn = [];
+        for(let word of parsedBody) {
+            rtn.push(word);
+            rtn.push(" ");
+        }
+        rtn.pop();
+        console.log("Parsed body", rtn);
+        return rtn;
+    };
+
+
     return (
         <div>
             {console.log("thread", props.thread)}
             <a href="#" onClick={() => dispatch(showSingle(props.thread.id))}>Title: {props.thread.title}</a>
             <p>Author: {props.thread.author}</p>
-            <p>Body: {props.thread.body}</p>
+            <p>Body: {parseTags(props.thread.body)}</p>
             <p>Posted: {parseTimestamp(props.thread.timestamp)}</p>
         </div>
     );
