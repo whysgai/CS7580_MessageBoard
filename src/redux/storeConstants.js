@@ -15,5 +15,6 @@ export const INITIAL_STATE = {
     view: VIEW_STATE.THREAD_LIST,
     user: -1,
     threads: [],
-    singleId: ""
+    singleId: "",
+    searchTags: []
 }

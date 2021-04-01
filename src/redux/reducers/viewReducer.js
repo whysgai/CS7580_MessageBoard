@@ -3,18 +3,22 @@ import { VIEW_LIST, VIEW_SINGLE } from "../actionConstants";
 
 const INITIAL_STATE = {
     view: VIEW_STATE.THREAD_LIST,
-    singleId: ""
+    singleId: "",
+    searchTags: []
 };
 
 export const viewReducer  = (state=INITIAL_STATE, action) => {
     switch (action.type) {
         case VIEW_LIST:
-            return { 
+            return {
+                ...state,
                 view: VIEW_STATE.THREAD_LIST,
-                singleId: "" 
+                singleId: "",
+                searchTags: action.payload.searchTags 
             };
         case VIEW_SINGLE:
-            return { 
+            return {
+                ...state, 
                 view: VIEW_STATE.SINGLE_THREAD,
                 singleId: action.payload.threadId 
             };
