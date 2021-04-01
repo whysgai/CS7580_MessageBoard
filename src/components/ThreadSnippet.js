@@ -1,16 +1,18 @@
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { showSingle } from "../redux/actions/viewActions"
+import { showSingle } from "../redux/actions/viewActions";
+import { parseTimestamp } from "../redux/actions/threadActions";
 
 const ThreadSnippet = (props) => {
     const dispatch = useDispatch();
 
     const parseTimestamp = (seconds) => {
-        let timestamp = new Date(seconds);
-        console.log("Timestamp:", timestamp);
+        let dateTime = new Date(seconds);
+        console.log("Timestamp:", dateTime);
         // now we need to parse the time object into a string
-        return "hey";
-    }
+        let timeStamp = dateTime.toLocaleDateString("en-US", { year: '2-digit', month: 'long', day: 'numeric' }) + " at " + dateTime.toLocaleTimeString("en-US", {timeZone: 'America/New_York', hourCycle: 'h24'});
+        return timeStamp;
+    };
 
     return (
         <div>
@@ -18,7 +20,7 @@ const ThreadSnippet = (props) => {
             <a href="#" onClick={() => dispatch(showSingle(props.thread.id))}>Title: {props.thread.title}</a>
             <p>Author: {props.thread.author}</p>
             <p>Body: {props.thread.body}</p>
-            <p>Created: {parseTimestamp(props.thread.timestamp)}</p>
+            <p>Posted: {parseTimestamp(props.thread.timestamp)}</p>
         </div>
     );
 };

@@ -11,11 +11,13 @@ const ThreadComponent = () => {
     const threads = useSelector(state => state.threads);
     const threadId = useSelector(state => state.viewReducer.singleId);
 
-    // useEffect(() => {
-    //     if (loginState === LOGIN_STATE.LOGGED_IN) {
-    //         dispatch(readThreadByID(threadId));
-    //     }
-    // }, [loginState]);
+    const parseTimestamp = (seconds) => {
+        let dateTime = new Date(seconds);
+        console.log("Timestamp:", dateTime);
+        // now we need to parse the time object into a string
+        let timeStamp = dateTime.toLocaleDateString("en-US", { year: '2-digit', month: 'long', day: 'numeric' }) + " at " + dateTime.toLocaleTimeString("en-US", {timeZone: 'America/New_York', hourCycle: 'h24'});
+        return timeStamp;
+    };
 
     return (
         <>            
@@ -25,6 +27,7 @@ const ThreadComponent = () => {
                         <p>Title: {thread.title}</p>
                         <p>Author: {thread.author}</p>
                         <p>Body: {thread.body}</p>
+                        <p>Posted: {parseTimestamp(thread.timestamp)}</p>
                         <NewReply threadId={thread.id}/>
                         {
                             thread.replies.map((reply, index) =>
