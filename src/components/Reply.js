@@ -10,10 +10,26 @@ const Reply = (props) => {
         return timeStamp;
     };
 
+    const parseTags = (rawBody) => {
+        let parsedBody =  rawBody.split(" ").map(word => 
+            word.charAt(0) === "#" ?
+                <a className="tag" href="#">{word}</a>
+                :
+                word        
+        );
+        let rtn = [];
+        for(let word of parsedBody) {
+            rtn.push(word);
+            rtn.push(" ");
+        }
+        rtn.pop();
+        return rtn;
+    };
+
     return (
         <>
             <p>Replier: {props.reply.author}</p>
-            <p>Reply: {props.reply.body}</p>
+            <p>Reply: {parseTags(props.reply.body)}</p>
             <p>Replied: {parseTimestamp(props.reply.timestamp)}</p>
         </>
     );

@@ -27,7 +27,6 @@ const ThreadSnippet = (props) => {
             rtn.push(" ");
         }
         rtn.pop();
-        console.log("Parsed body", rtn);
         return rtn;
     };
 

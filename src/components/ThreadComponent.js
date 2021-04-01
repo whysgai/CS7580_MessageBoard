@@ -19,6 +19,22 @@ const ThreadComponent = () => {
         return timeStamp;
     };
 
+    const parseTags = (rawBody) => {
+        let parsedBody =  rawBody.split(" ").map(word => 
+            word.charAt(0) === "#" ?
+                <a className="tag" href="#">{word}</a>
+                :
+                word        
+        );
+        let rtn = [];
+        for(let word of parsedBody) {
+            rtn.push(word);
+            rtn.push(" ");
+        }
+        rtn.pop();
+        return rtn;
+    };
+
     return (
         <>            
             {
@@ -26,7 +42,7 @@ const ThreadComponent = () => {
                     <>
                         <p>Title: {thread.title}</p>
                         <p>Author: {thread.author}</p>
-                        <p>Body: {thread.body}</p>
+                        <p>Body: {parseTags(thread.body)}</p>
                         <p>Posted: {parseTimestamp(thread.timestamp)}</p>
                         <NewReply threadId={thread.id}/>
                         {
