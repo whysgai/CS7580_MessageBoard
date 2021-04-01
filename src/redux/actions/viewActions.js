@@ -1,7 +1,10 @@
 import { VIEW_LIST, VIEW_SINGLE } from "../actionConstants";
 
-export const showList = () => ({
-    type: VIEW_LIST
+export const showList = searchTags => ({
+    type: VIEW_LIST,
+    payload: {
+        searchTags
+    }
 });
 
 export const showSingle = threadId => ({
