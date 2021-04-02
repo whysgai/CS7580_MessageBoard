@@ -34,17 +34,17 @@ const NewThread = () => {
         <>
             <p>Start a new thread</p>
             <div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="newThreadTitle" placeholder="Thread title"
+                <div className="form-floating mb-3">
+                    <input type="text" className="form-control" id="newThreadTitle" placeholder="Thread title"
                         value={title} onChange={e => setTitle(e.target.value)}
                     />
-                    <label for="newThreadTitle">Thread title</label>
+                    <label htmlFor="newThreadTitle">Thread title</label>
                 </div>
-                <div class="form-floating mb-3">
-                    <textarea class="form-control" placeholder="Thread content" id="newThreadBody"
+                <div className="form-floating mb-3">
+                    <textarea className="form-control" placeholder="Thread content" id="newThreadBody"
                         value={body} onChange={e => setBody(e.target.value)}
                     />
-                    <label for="newThreadBody">Thread content</label>
+                    <label htmlFor="newThreadBody">Thread content</label>
                 </div>
                 <button className="btn btn-success" onClick={() => postThread()}>Post</button>
             </div>
