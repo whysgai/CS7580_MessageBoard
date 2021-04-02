@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { LOGIN_STATE } from "../redux/storeConstants";
 import { readThreadByID } from "../redux/actions/threadActions";
+import { showList } from "../redux/actions/viewActions";
 import Reply from "./Reply";
 import NewReply from "./NewReply";
 
@@ -22,7 +23,7 @@ const ThreadComponent = () => {
     const parseTags = (rawBody) => {
         let parsedBody =  rawBody.split(" ").map(word => 
             word.charAt(0) === "#" ?
-                <a className="tag" href="#">{word}</a>
+                <a className="tag" href="#" onClick={() => dispatch(showList(word))}>{word}</a>
                 :
                 word        
         );

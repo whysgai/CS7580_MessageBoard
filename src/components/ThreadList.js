@@ -9,12 +9,14 @@ const ThreadList = () => {
     const dispatch = useDispatch();
     const loginState = useSelector(state => state.loginReducer.loginState);
     const threads = useSelector(state => state.threads);
+    const stateSearchTags = useSelector(state => state.viewReducer.searchTags);
 
-    useEffect(() => {
-        if (loginState === LOGIN_STATE.LOGGED_IN) {
-            dispatch(readAllThreads());
-        }
-    }, [loginState]);
+    // useEffect(() => {
+    //     console.log("Thread List state search tags", stateSearchTags);
+    //     if (loginState === LOGIN_STATE.LOGGED_IN) {
+    //         dispatch(readAllThreads());
+    //     }
+    // }, [loginState]);
 
     return (
         <>

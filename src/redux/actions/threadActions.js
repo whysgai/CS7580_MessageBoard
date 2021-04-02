@@ -19,14 +19,6 @@ const addReply = (threadId, reply) => ({
     }
 });
 
-// const parseTimestamp = (seconds) => {
-//     let dateTime = new Date(seconds);
-//     console.log("Timestamp:", dateTime);
-//     // now we need to parse the time object into a string
-//     let timeStamp = dateTime.toLocaleDateString("en-US", { year: '2-digit', month: 'long', day: 'numeric' }) + " at " + dateTime.toLocaleTimeString("en-US", {timeZone: 'America/New_York', hourCycle: 'h24'});
-//     return timeStamp;
-// }
-
 export const readAllThreads = () => {
     console.log("Reading threads from server");
     return dispatch => {
@@ -72,7 +64,7 @@ export const readThreadByID = (id) => {
 };
 
 export const readThreadByTag = (searchTags) => {
-    console.log("Reading thread tags from server");
+    console.log("Reading thread tags from server", searchTags);
     return dispatch => {
         database.collection("threads").where("tags", "array-contains-any", searchTags).get()
             .then(querySnapshot => {

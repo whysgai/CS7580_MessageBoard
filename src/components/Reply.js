@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { showList } from "../redux/actions/viewActions";
 
 const Reply = (props) => {
+    const dispatch = useDispatch();
 
     const parseTimestamp = (seconds) => {
         let dateTime = new Date(seconds);
@@ -13,7 +16,7 @@ const Reply = (props) => {
     const parseTags = (rawBody) => {
         let parsedBody =  rawBody.split(" ").map(word => 
             word.charAt(0) === "#" ?
-                <a className="tag" href="#">{word}</a>
+                <a className="tag" href="#" onClick={() => dispatch(showList(word))}>{word}</a>
                 :
                 word        
         );
