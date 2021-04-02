@@ -6,6 +6,7 @@ import ThreadComponent from "../components/ThreadComponent";
 import { LOGIN_STATE, VIEW_STATE } from "../redux/storeConstants";
 import { validateUser } from "../redux/actions/loginActions"
 import NewThread from "../components/NewThread";
+import SearchTags from "../components/SearchTags";
 
 function App() {
     const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
             {
                 view === VIEW_STATE.THREAD_LIST ?
                     <>
+                        <SearchTags />
                         <NewThread />
                         <ThreadList />
                     </>

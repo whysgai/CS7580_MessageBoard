@@ -71,6 +71,28 @@ export const readThreadByID = (id) => {
     };
 };
 
+export const readThreadByTag = (searchTags) => {
+    console.log("Reading thread tags from server");
+    return dispatch => {
+        database.collection("threads").where("tags", "array-contains-any", searchTags).get()
+            .then(querySnapshot => {
+                let threads = [];
+                querySnapshot.forEach(doc => {
+                    threads.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
+                });
+                console.log("Threads retreved from server", threads);
+                // dispatch(readThreads(threads));
+            })
+            .catch(error => {
+                console.log("Login error", error);
+                // dispatch(loginNetworkError());
+            });
+    };
+};
+
 export const createThread = (thread) => {
     console.log("Posting thread to server");
     const threads = store.getState().threads;
