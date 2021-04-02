@@ -4,7 +4,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { readThreadByTag } from "../redux/actions/threadActions";
 
 const SearchTags = () => {
-    const [search, setSearch] = useState(state => state.viewReducer.searchTags);
+    const stateSearchTags = useSelector(state => state.viewReducer.searchTags);
+    console.log("State search tags", stateSearchTags);
+    let tagString = "";
+    for(let tag of stateSearchTags) {
+        tagString = tagString + tag + "";
+    }
+    console.log("Tag string", tagString);
+    const [search, setSearch] = useState(tagString);
+    console.log("Search now equals", search);
     const [searchTags, setSearchTags] = useState([]);
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();
@@ -16,24 +24,18 @@ const SearchTags = () => {
     }, [search]);
 
     const submitSearch = () => {
-        // let newThread = {
-        //     author : user.id,
-        //     body : body,
-        //     timestamp : Date.now()
-        // }
         console.log("Search for", searchTags);
         // dispatch(readThreadByTag(searchTags));
-        // setSearch("");
     };
 
 
     return (
         <>
-            <div class="form-floating mb-3">
+            <div className="form-floating mb-3">
                 <input type="text" className="form-control" placeholder="Search tags" id="tagSearch"
                     value={search} onChange={e => setSearch(e.target.value)}
                 />
-                <label for="tagSearch">Search tags</label>
+                <label htmlFor="tagSearch">Search tags</label>
             </div>
             <button className="btn btn-success" onClick={() => submitSearch()}>Search</button>
         </>
