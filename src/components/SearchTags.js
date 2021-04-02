@@ -25,7 +25,7 @@ const SearchTags = () => {
 
     const submitSearch = () => {
         console.log("Search for", searchTags);
-        // dispatch(readThreadByTag(searchTags));
+        dispatch(readThreadByTag(searchTags));
     };
 
 
