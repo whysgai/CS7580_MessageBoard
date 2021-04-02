@@ -4,15 +4,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { readThreadByTag } from "../redux/actions/threadActions";
 
 const SearchTags = () => {
-    const stateSearchTags = useSelector(state => state.viewReducer.searchTags);
-    console.log("State search tags", stateSearchTags);
-    let tagString = "";
-    for(let tag of stateSearchTags) {
-        tagString = tagString + tag + "";
-    }
-    console.log("Tag string", tagString);
-    const [search, setSearch] = useState(tagString);
-    console.log("Search now equals", search);
+    // const stateSearchTags = useSelector(state => state.viewReducer.searchTags);
+    // console.log("State search tags", stateSearchTags);
+    // let tagString = "";
+    // for(let tag of stateSearchTags) {
+    //     tagString = tagString + tag + "";
+    // }
+    // console.log("Tag string", tagString);
+    // const [search, setSearch] = useState(tagString);
+    const [search, setSearch] = useState("");
+    // console.log("Search now equals", search);
     const [searchTags, setSearchTags] = useState([]);
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();

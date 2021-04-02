@@ -84,7 +84,7 @@ export const readThreadByTag = (searchTags) => {
                     });
                 });
                 console.log("Threads retreved from server", threads);
-                // dispatch(readThreads(threads));
+                dispatch(readThreads(threads));
             })
             .catch(error => {
                 console.log("Login error", error);
