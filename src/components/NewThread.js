@@ -31,9 +31,11 @@ const NewThread = () => {
     };
 
     return (
-        <>
-            <p>Start a new thread</p>
-            <div>
+        <div className="list-group-item">
+            <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#startThreadCollapse" aria-expanded="false" aria-controls="startThreadCollapse">
+                Start a new thread
+            </button>
+            <div className="collapse mt-3" id="startThreadCollapse">
                 <div className="form-floating mb-3">
                     <input type="text" className="form-control" id="newThreadTitle" placeholder="Thread title"
                         value={title} onChange={e => setTitle(e.target.value)}
@@ -46,9 +48,9 @@ const NewThread = () => {
                     />
                     <label htmlFor="newThreadBody">Thread content</label>
                 </div>
-                <button className="btn btn-success" onClick={() => postThread()}>Post</button>
+                <button className="btn btn-success" onClick={() => postThread()} disabled={title === "" || body === "" ? true : false}>Post</button>
             </div>
-        </>
+        </div>
     );
 };
 

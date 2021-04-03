@@ -31,8 +31,11 @@ function App() {
                 view === VIEW_STATE.THREAD_LIST ?
                     <>
                         <SearchTags />
-                        <NewThread />
-                        <ThreadList />
+                        <div className="card card-body list-group-flush">
+                            <NewThread />
+                            <ThreadList />
+                        </div>
+                        
                     </>
                     
                     :

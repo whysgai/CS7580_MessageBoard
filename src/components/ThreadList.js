@@ -21,7 +21,7 @@ const ThreadList = () => {
     return (
         <>
             {console.log("Threads", threads)}
-            <p>Threads: </p>
+            {/* <p>Threads: </p> */}
             {
                 threads.map((thread, index) => 
                     <ThreadSnippet key={index} thread={thread}/>

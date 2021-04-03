@@ -32,7 +32,7 @@ const ThreadSnippet = (props) => {
 
 
     return (
-        <div>
+        <div className="list-group-item">
             {console.log("thread", props.thread)}
             <a href="#" onClick={() => dispatch(showSingle(props.thread.id))}>Title: {props.thread.title}</a>
             <p>Author: {props.thread.author}</p>
