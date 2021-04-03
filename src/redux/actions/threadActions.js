@@ -32,6 +32,7 @@ export const readAllThreads = () => {
                     })
                 })
                 console.log("Threads retreved from server", threads);
+                threads.sort((threadA, threadB) => threadA.timestamp - threadB.timestamp);
                 dispatch(readThreads(threads));
             })
             .catch(error => {
@@ -54,6 +55,7 @@ export const readThreadByID = (id) => {
                     })
                 })
                 console.log("Threads retreved from server", threads);
+                threads.sort((threadA, threadB) => threadA.timestamp - threadB.timestamp);
                 dispatch(readThreads(threads));
             })
             .catch(error => {
@@ -76,6 +78,7 @@ export const readThreadByTag = (searchTags) => {
                     });
                 });
                 console.log("Threads retreved from server", threads);
+                threads.sort((threadA, threadB) => threadA.timestamp - threadB.timestamp);
                 dispatch(readThreads(threads));
             })
             .catch(error => {
@@ -97,6 +100,7 @@ export const createThread = (thread) => {
                     id:  newThread.id
                 }])
                 console.log("Updated threads after add", newThreads);
+                threads.sort((threadA, threadB) => threadA.timestamp - threadB.timestamp);
                 dispatch(readThreads(threads));
             })
             .catch(error => console.log(error));
