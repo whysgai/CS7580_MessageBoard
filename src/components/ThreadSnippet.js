@@ -30,13 +30,21 @@ const ThreadSnippet = (props) => {
         return rtn;
     };
 
+    const truncateBody = () => {
+        if (props.thread.body.length > 200) {
+            return parseTags(props.thread.body.substring(0,200) + "...");
+        } else {
+            return parseTags(props.thread.body);
+        }        
+    };
 
     return (
         <div className="list-group-item">
             {console.log("thread", props.thread)}
             <a href="#" onClick={() => dispatch(showSingle(props.thread.id))}>Title: {props.thread.title}</a>
             <p>Author: {props.thread.author}</p>
-            <p>Body: {parseTags(props.thread.body)}</p>
+            {/* <p>Body: {parseTags(props.thread.body)}</p> */}
+            <p>Body: {truncateBody()}</p>
             <p>Posted: {parseTimestamp(props.thread.timestamp)}</p>
         </div>
     );

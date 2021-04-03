@@ -30,11 +30,11 @@ const Reply = (props) => {
     };
 
     return (
-        <>
+        <div className="list-group-item">
             <p>Replier: {props.reply.author}</p>
             <p>Reply: {parseTags(props.reply.body)}</p>
             <p>Replied: {parseTimestamp(props.reply.timestamp)}</p>
-        </>
+        </div>
     );
 };
 

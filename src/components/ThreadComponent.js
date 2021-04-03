@@ -40,18 +40,24 @@ const ThreadComponent = () => {
         <>            
             {
                 threads.filter(thread => threadId === thread.id).map((thread, index) => 
-                    <>
-                        <p>Title: {thread.title}</p>
-                        <p>Author: {thread.author}</p>
-                        <p>Body: {parseTags(thread.body)}</p>
-                        <p>Posted: {parseTimestamp(thread.timestamp)}</p>
-                        <NewReply threadId={thread.id}/>
-                        {
-                            thread.replies.map((reply, index) =>
-                                <Reply key={index} reply={reply} />
-                            )
-                        }
-                    </>
+                    <div className="card card-body">
+                        <div className="list-group-flush">
+                            <div className="list-group-item">
+                                <p>Title: {thread.title}</p>
+                                <p>Author: {thread.author}</p>
+                                <p>Body: {parseTags(thread.body)}</p>
+                                <p>Posted: {parseTimestamp(thread.timestamp)}</p>
+                            </div>
+                            <div className="list-group-item">
+                                <NewReply threadId={thread.id}/>
+                            </div> 
+                            {
+                                thread.replies.map((reply, index) =>
+                                    <Reply key={index} reply={reply} />
+                                )
+                            }
+                        </div>
+                    </div>
                 )
             }
         </>
