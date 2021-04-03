@@ -20,8 +20,6 @@ function App() {
         }
     });
 
-    const sample = <span>sample text</span>;
-
     return (
         <div className="App container">
             {/* {console.log("Current state", state)} */}
@@ -29,7 +27,6 @@ function App() {
             {console.log("Current user", user)}
             {console.log("Current view", view)}
             <p>hi { user !== null && user !== undefined ? user.id : "" }</p>
-            <p>{sample}</p>
             {
                 view === VIEW_STATE.THREAD_LIST ?
                     <>

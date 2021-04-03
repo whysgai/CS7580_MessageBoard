@@ -29,20 +29,14 @@ const SearchTags = () => {
     }, [search]);
 
     useEffect(() => {
-
-        console.log("State search tags", stateSearchTags);
         let tagString = "";
         for(let tag of stateSearchTags) {
             tagString = tagString + tag + "";
         };
-        console.log("Tag string", tagString);
         if (tagString !== "") {
-            
-
             setSearch(tagString);
             let newTags = tagString.split(" ").map(word => word.charAt(0) !== "#" ? "#" + word : word);
             setSearchTags(newTags);
-            console.log("Set new tags", newTags);
             dispatch(readThreadByTag(newTags));
         }
     }, [stateSearchTags])
@@ -51,7 +45,6 @@ const SearchTags = () => {
         if (search === "") {
             searchAll();
         } else {
-            console.log("Search for", searchTags);
             dispatch(readThreadByTag(searchTags));
         }        
     };
@@ -70,14 +63,20 @@ const SearchTags = () => {
 
     return (
         <>
-            <div className="form-floating mb-3">
-                <input type="text" className="form-control" placeholder="Search tags" id="tagSearch"
+            <div className="form-floating input-group mb-3">
+                <input type="text" className="form-control" placeholder="Search by tags" id="tagSearch"
                     value={search} onChange={e => setSearch(e.target.value)} onKeyUp={e => handleKeyPress(e)}
                 />
-                <label htmlFor="tagSearch">Search tags</label>
+                <label htmlFor="tagSearch">Search threads by tag</label>
+                {
+                    search !== "" ?
+                        <button className="btn btn-outline-secondary" onClick={() => searchAll()}>X</button>
+                        :
+                        <></>
+                }                
+                <button className="btn btn-outline-success" onClick={() => submitSearch()}>Search</button>
             </div>
-            <button className="btn btn-success" onClick={() => submitSearch()}>Search</button>
-            <button className="btn btn-info" onClick={() => searchAll()}>All</button>
+            
         </>
     );
 };
