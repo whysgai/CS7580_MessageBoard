@@ -4,6 +4,7 @@ import {Provider} from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import bootstrap from 'bootstrap';
 import store from "./redux/store";
+import './styles/styles.css';
 import './styles/index.css';
 import App from './view/App';
 import reportWebVitals from './reportWebVitals';

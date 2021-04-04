@@ -1,0 +1,18 @@
+
+.start-thread-submit{
+    float: right;
+}
+
+.thread-title {
+    text-decoration: none;
+}
+
+@media (max-width: 450px) {
+    .start-thread-open{
+        width: 100%;
+    }
+
+    .start-thread-submit{
+        width: 100%;
+    }
+}

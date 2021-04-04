@@ -32,7 +32,7 @@ const NewThread = () => {
 
     return (
         <div className="list-group-item">
-            <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#startThreadCollapse" aria-expanded="false" aria-controls="startThreadCollapse">
+            <button className="btn btn-primary start-thread-open" type="button" data-bs-toggle="collapse" data-bs-target="#startThreadCollapse" aria-expanded="false" aria-controls="startThreadCollapse">
                 Start a new thread
             </button>
             <div className="collapse mt-3" id="startThreadCollapse">
@@ -44,11 +44,11 @@ const NewThread = () => {
                 </div>
                 <div className="form-floating mb-3">
                     <textarea className="form-control" placeholder="Thread content" id="newThreadBody"
-                        value={body} onChange={e => setBody(e.target.value)}
+                        value={body} onChange={e => setBody(e.target.value)} rows="5"
                     />
                     <label htmlFor="newThreadBody">Thread content</label>
                 </div>
-                <button className="btn btn-success" onClick={() => postThread()} disabled={title === "" || body === "" ? true : false}>Post</button>
+                <button className="btn btn-success start-thread-submit" onClick={() => postThread()} disabled={title === "" || body === "" ? true : false}>Post</button>
             </div>
         </div>
     );

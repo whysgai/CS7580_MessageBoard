@@ -34,10 +34,8 @@ function App() {
                         <div className="card card-body list-group-flush">
                             <NewThread />
                             <ThreadList />
-                        </div>
-                        
-                    </>
-                    
+                        </div>                        
+                    </>                    
                     :
                     <>{
                         view === VIEW_STATE.SINGLE_THREAD ?

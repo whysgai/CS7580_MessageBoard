@@ -75,8 +75,7 @@ const SearchTags = () => {
                         <></>
                 }                
                 <button className="btn btn-outline-success" onClick={() => submitSearch()}>Search</button>
-            </div>
-            
+            </div>            
         </>
     );
 };

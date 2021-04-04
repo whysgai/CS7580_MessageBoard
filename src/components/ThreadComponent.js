@@ -43,10 +43,10 @@ const ThreadComponent = () => {
                     <div className="card card-body" key={index}>
                         <div className="list-group-flush">
                             <div className="list-group-item">
-                                <p>Title: {thread.title}</p>
+                                <p>{thread.title}</p>
                                 <button type="button" class="btn-close" aria-label="Close" onClick={() => dispatch(showList(""))}/>
                                 <p>Author: {thread.author}</p>
-                                <p>Body: {parseTags(thread.body)}</p>
+                                <p>{parseTags(thread.body)}</p>
                                 <p>Posted: {parseTimestamp(thread.timestamp)}</p>
                             </div>
                             <div className="list-group-item">

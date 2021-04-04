@@ -41,10 +41,10 @@ const ThreadSnippet = (props) => {
     return (
         <div className="list-group-item">
             {console.log("thread", props.thread)}
-            <a href="#" onClick={() => dispatch(showSingle(props.thread.id))}>Title: {props.thread.title}</a>
+            <a className="thread-title" href="#" onClick={() => dispatch(showSingle(props.thread.id))}><h3>{props.thread.title}</h3></a>
             <p>Author: {props.thread.author}</p>
             {/* <p>Body: {parseTags(props.thread.body)}</p> */}
-            <p>Body: {truncateBody()}</p>
+            <p>{truncateBody()}</p>
             <p>Posted: {parseTimestamp(props.thread.timestamp)}</p>
         </div>
     );
