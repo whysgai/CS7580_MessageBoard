@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createReply } from "../redux/actions/threadActions";
 
@@ -20,13 +20,13 @@ const NewReply = (props) => {
 
     return (
         <>
-            <div class="form-floating mb-3">
-                <textarea class="form-control" placeholder="Reply" id="newReplyBody"
+            <div className="form-floating mb-3">
+                <textarea className="form-control" placeholder="Reply" id="newReplyBody"
                     value={body} onChange={e => setBody(e.target.value)}
                 />
-                <label for="newReplyBody">Reply content</label>
+                <label htmlFor="newReplyBody">Reply content</label>
             </div>
-            <button className="btn btn-success" onClick={() => postReply()}>Post</button>
+            <button className="btn btn-success" onClick={() => postReply()} disabled={body === "" ? true : false}>Post</button>
         </>
     );
 };

@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ThreadList from '../components/ThreadList';
 import ThreadComponent from "../components/ThreadComponent";
-// import '../styles/App.css';
 import { LOGIN_STATE, VIEW_STATE } from "../redux/storeConstants";
 import { validateUser } from "../redux/actions/loginActions"
 import NewThread from "../components/NewThread";
@@ -22,10 +21,6 @@ function App() {
 
     return (
         <div className="App container">
-            {/* {console.log("Current state", state)} */}
-            {console.log("Login state", loginState)}
-            {console.log("Current user", user)}
-            {console.log("Current view", view)}
             <p>hi { user !== null && user !== undefined ? user.id : "" }</p>
             {
                 view === VIEW_STATE.THREAD_LIST ?

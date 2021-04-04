@@ -14,11 +14,10 @@ const SearchTags = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log("Thread List state search tags", stateSearchTags);
         if (loginState === LOGIN_STATE.LOGGED_IN) {
             dispatch(readAllThreads());
         }
-    }, [loginState]);
+    }, [loginState, dispatch]);
 
     useEffect(() => {
         if (search !== "") {
@@ -39,7 +38,7 @@ const SearchTags = () => {
             setSearchTags(newTags);
             dispatch(readThreadByTag(newTags));
         }
-    }, [stateSearchTags])
+    }, [stateSearchTags, dispatch])
 
     const submitSearch = () => {
         if (search === "") {

@@ -1,5 +1,4 @@
 import { LOGIN_SUCCESS, INVALID_LOGIN, LOGIN_NETWORK_ERROR, LOGOUT } from "../actionConstants";
-import store from "../store";
 import firebase from "../../fbConfig";
 
 const database = firebase.firestore();

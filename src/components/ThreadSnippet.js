@@ -1,23 +1,21 @@
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { showList, showSingle } from "../redux/actions/viewActions";
-import { parseTimestamp } from "../redux/actions/threadActions";
 
 const ThreadSnippet = (props) => {
     const dispatch = useDispatch();
 
     const parseTimestamp = (seconds) => {
         let dateTime = new Date(seconds);
-        console.log("Timestamp:", dateTime);
         // now we need to parse the time object into a string
         let timeStamp = dateTime.toLocaleDateString("en-US", { year: '2-digit', month: 'long', day: 'numeric' }) + " at " + dateTime.toLocaleTimeString("en-US", {timeZone: 'America/New_York', hourCycle: 'h24'});
         return timeStamp;
     };
 
     const parseTags = (rawBody) => {
-        let parsedBody =  rawBody.split(" ").map(word => 
+        let parsedBody =  rawBody.split(" ").map((word, index) => 
             word.charAt(0) === "#" ?
-                <a className="tag" href="#" onClick={() => dispatch(showList(word))}>{word}</a>
+                <a className="tag" href="#" onClick={() => dispatch(showList(word))} key={index}>{word}</a>
                 :
                 word        
         );
@@ -40,10 +38,8 @@ const ThreadSnippet = (props) => {
 
     return (
         <div className="list-group-item">
-            {console.log("thread", props.thread)}
             <a className="thread-title" href="#" onClick={() => dispatch(showSingle(props.thread.id))}><h3>{props.thread.title}</h3></a>
             <p>Author: {props.thread.author}</p>
-            {/* <p>Body: {parseTags(props.thread.body)}</p> */}
             <p>{truncateBody()}</p>
             <p>Posted: {parseTimestamp(props.thread.timestamp)}</p>
         </div>
