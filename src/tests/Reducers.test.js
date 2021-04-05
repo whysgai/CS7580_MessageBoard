@@ -1,5 +1,6 @@
+import { _ } from "lodash";
 import { rootReducer } from "../redux/store";
-import { LOGIN_STATE, VIEW_STATE } from "../redux/storeConstants";
+import { INITIAL_STATE, LOGIN_STATE, VIEW_STATE } from "../redux/storeConstants";
 import { LOGGED_OUT, THREAD_LIST, READ_THREADS } from "../redux/actionConstants";
 
 const TEST_STATE_INIT = {
@@ -10,6 +11,8 @@ const TEST_STATE_INIT = {
     singleId: "",
     searchTags: []
 };
+
+let TEST_STATE = {};
 
 const SAMPLE_THREADS = [
     {
@@ -37,7 +40,7 @@ const SAMPLE_THREADS = [
 ];
 
 beforeEach(() => {
-    let TEST_STATE = TEST_STATE_INIT;
+    TEST_STATE = _.cloneDeep(INITIAL_STATE);
 });
 
 //Login reducer tests
