@@ -1,16 +1,68 @@
+import { loginFail, loginNetworkError, loginSuccess, logout } from "../redux/actions/loginActions";
+import {} from "../redux/actions/viewActions";
+import {} from "../redux/actions/threadActions";
+import { LOGIN_SUCCESS, INVALID_LOGIN, LOGOUT, LOGIN_NETWORK_ERROR, VIEW_LIST, VIEW_SINGLE, 
+    READ_THREADS, ADD_REPLY } from "../redux/actionConstants";
+
+
 test.skip("Placeholder", () => {});
+
+beforeAll(() => {
+    //console.log("++++++++ ACTION TESTS +++++++++++++++");
+});
 
 //login actions
 // login success
-test.skip("Generate login success action", () => {});
+test("Generate login success action", () => {
+    const user = {
+        id: "Starbuck"
+    };
+
+    const expectedAction = {
+        type: LOGIN_SUCCESS,
+        payload: {
+            user
+        }
+    };
+
+    expect(loginSuccess(user)).toEqual(expectedAction);
+});
 // login fail
-test.skip("Generate invalid login action", () => {});
+test("Generate invalid login action", () => {
+    const expectedAction = {type: INVALID_LOGIN};
+    expect(loginFail()).toEqual(expectedAction);
+});
 // login error
-test.skip("Generate login error action", () => {});
+test("Generate login error action", () => {
+    const expectedAction = {type: LOGIN_NETWORK_ERROR};
+    expect(loginNetworkError()).toEqual(expectedAction);
+});
 // validate user
-test.skip("Generate login success action on valid user action", () => {});
+test.skip("Generate login success action on valid user action", () => {
+    // Dependent on mock data
+    const user = {
+        id: "0",
+        username: "j_newbie",
+        firstname: "J",
+        lastname: "Newbie",
+        onboardingComplete: false,
+        hasUsedFilter: false
+    }
+
+    const expectedAction = {
+        type: LOGIN_SUCCESS,
+        payload: {
+            user
+        }
+    }
+
+    expect(validateUser("j_newbie", "1234")).toEqual(expectedAction);
+});
 // logout
-test.skip("Generate logout success action", () => {});
+test("Generate logout success action", () => {
+    const expectedAction = {type: LOGOUT};
+    expect(logout()).toEqual(expectedAction);
+});
 
 //view actions
 // showList
