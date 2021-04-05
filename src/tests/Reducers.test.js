@@ -10,6 +10,16 @@ const TEST_STATE_INIT = {
     threads: [],
     singleId: "",
     searchTags: []
+    // loginReducer : {
+    //     loginState: LOGIN_STATE.LOGGED_OUT
+    // },
+    // user: -1,
+    // threads: [],
+    // viewReducer: {
+    //     searchTags: [],
+    //     singleId: "",
+    //     view: VIEW_STATE.THREAD_LIST
+    // }
 };
 
 let TEST_STATE = {};
@@ -56,12 +66,45 @@ test.skip("Logging out updates login state", () =>{});
 //thread reducer tests
 //  read threads
 test("Successful request for many threads populates threads in state", () =>{
-    let testReadThreads = {
+
+    const testReadThreads = {
         type: READ_THREADS,
         payload: {
-            threads: []
+            threads: _.cloneDeep(SAMPLE_THREADS)
         }
-    }
+    };
+
+    const endState = {
+        loginState: LOGIN_STATE.LOGGED_OUT,
+        view: VIEW_STATE.THREAD_LIST,
+        user: -1,
+        singleId: "",
+        searchTags: [],
+        threads:     [{
+            author: "Starsky",
+            body: "First sample thread body here words #tag #more-tag #heyoo",
+            replies: [],
+            tags: ["#tag", "#more-tag", "#heyoo"],
+            timestamp: 1617569322,
+            title: "First"
+        },
+        {
+            author: "Hutch",
+            body: "Second but with more words and no tags and maybe some replies I don't really know this is just filler text why didn't I get lorem ipsum?",
+            replies: [
+                {
+                    author: "Starsky",
+                    body: "Heeeeeey bruh!",
+                    timestamp: 1617569453
+                }
+            ],
+            tags: [],
+            timestamp: 1617569393,
+            title: "Second"
+        }]
+    };
+
+    expect(rootReducer(TEST_STATE_INIT, testReadThreads)).toEqual(endState);
 });
 
 test.skip("Successful request for one thread populates thread in state", () =>{});
