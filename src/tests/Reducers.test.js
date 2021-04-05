@@ -1,7 +1,8 @@
 import { _ } from "lodash";
 import { rootReducer } from "../redux/store";
 import { INITIAL_STATE, LOGIN_STATE, VIEW_STATE, THREAD_LIST, SINGLE_THREAD } from "../redux/storeConstants";
-import { LOGGED_OUT, VIEW_LIST, VIEW_SINGLE, READ_THREADS, ADD_REPLY } from "../redux/actionConstants";
+import { LOGIN_SUCCESS, INVALID_LOGIN, LOGOUT, LOGIN_NETWORK_ERROR, VIEW_LIST, VIEW_SINGLE, 
+    READ_THREADS, ADD_REPLY } from "../redux/actionConstants";
 
 let TEST_STATE = {};
 
@@ -48,15 +49,111 @@ beforeEach(() => {
     }
 });
 
+test("Unknown action type returns store unchanged", () => {
+    expect(rootReducer(TEST_STATE, {})).toEqual(TEST_STATE);
+})
+
 //Login reducer tests
 //  login success
-test.skip("Logging in updates login state", () =>{});
+test("Logging in updates login state", () =>{
+    const testLoginSuccess = {
+        type: LOGIN_SUCCESS,
+        payload: {
+            user: 1
+        }
+    }
+
+    const endState = {
+        loginReducer : {
+            loginState: LOGIN_STATE.LOGGED_IN
+        },
+        user: 1,
+        threads: [],
+        viewReducer: {
+            searchTags: [],
+            singleId: "",
+            view: VIEW_STATE.THREAD_LIST
+        }
+    };
+
+    expect(rootReducer(TEST_STATE, testLoginSuccess)).toEqual(endState);
+});
 //  invalid login
-test.skip("Invalid login updates login state", () =>{});
+test("Invalid login updates login state", () =>{
+    const testLoginInvalid = {
+        type: INVALID_LOGIN,
+    }
+
+    const endState = {
+        loginReducer : {
+            loginState: LOGIN_STATE.INVALID_LOGIN
+        },
+        user: -1,
+        threads: [],
+        viewReducer: {
+            searchTags: [],
+            singleId: "",
+            view: VIEW_STATE.THREAD_LIST
+        }
+    };
+
+    expect(rootReducer(TEST_STATE, testLoginInvalid)).toEqual(endState);
+});
 //  login network error
-test.skip("Login error updates login state", () =>{});
+test("Login error updates login state", () =>{
+    const testLoginError = {
+        type: LOGIN_NETWORK_ERROR,
+    }
+
+    const endState = {
+        loginReducer : {
+            loginState: LOGIN_STATE.NETWORK_ERROR
+        },
+        user: -1,
+        threads: [],
+        viewReducer: {
+            searchTags: [],
+            singleId: "",
+            view: VIEW_STATE.THREAD_LIST
+        }
+    };
+
+    expect(rootReducer(TEST_STATE, testLoginError)).toEqual(endState);
+});
 //  logout
-test.skip("Logging out updates login state", () =>{});
+test("Logging out updates login state", () =>{
+    TEST_STATE = {
+        loginReducer : {
+            loginState: LOGIN_STATE.LOGGED_IN
+        },
+        user: 1,
+        threads: [],
+        viewReducer: {
+            searchTags: [],
+            singleId: "",
+            view: VIEW_STATE.THREAD_LIST
+        }
+    };
+
+    const testLogout = {
+        type: LOGOUT,
+    };
+
+    const endState = {
+        loginReducer : {
+            loginState: LOGIN_STATE.LOGGED_OUT
+        },
+        user: {},
+        threads: [],
+        viewReducer: {
+            searchTags: [],
+            singleId: "",
+            view: VIEW_STATE.THREAD_LIST
+        }
+    };
+
+    expect(rootReducer(TEST_STATE, testLogout)).toEqual(endState);
+});
 
 //thread reducer tests
 //  read threads
@@ -241,9 +338,68 @@ test("Setting the view to list populates state info", () =>{
     expect(rootReducer(TEST_STATE, testViewList)).toEqual(endState);
 });
 
-
 //user reducer tests
 //  login success
-test.skip("Login populates user info", () =>{});
+test("Login populates user info", () =>{
+    const testLoginSuccess = {
+        type: LOGIN_SUCCESS,
+        payload: {
+            user: {
+                id: "Snoopy"
+            }
+        }
+    }
+
+    const endState = {
+        loginReducer : {
+            loginState: LOGIN_STATE.LOGGED_IN
+        },
+        user: {
+            id: "Snoopy"
+        },
+        threads: [],
+        viewReducer: {
+            searchTags: [],
+            singleId: "",
+            view: VIEW_STATE.THREAD_LIST
+        }
+    };
+
+    expect(rootReducer(TEST_STATE, testLoginSuccess)).toEqual(endState);
+});
 //  logout
-test.skip("Logout removes user info", () =>{});
+test("Logout removes user info", () =>{
+    TEST_STATE = {
+        loginReducer : {
+            loginState: LOGIN_STATE.LOGGED_IN
+        },
+        user: {
+            id: "Linus"
+        },
+        threads: [],
+        viewReducer: {
+            searchTags: [],
+            singleId: "",
+            view: VIEW_STATE.THREAD_LIST
+        }
+    };
+
+    const testLogout = {
+        type: LOGOUT,
+    };
+
+    const endState = {
+        loginReducer : {
+            loginState: LOGIN_STATE.LOGGED_OUT
+        },
+        user: {},
+        threads: [],
+        viewReducer: {
+            searchTags: [],
+            singleId: "",
+            view: VIEW_STATE.THREAD_LIST
+        }
+    };
+
+    expect(rootReducer(TEST_STATE, testLogout)).toEqual(endState);
+});
