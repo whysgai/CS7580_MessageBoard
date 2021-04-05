@@ -34,6 +34,10 @@ const SAMPLE_THREADS = [
     }
 ];
 
+beforeAll(() => {
+    //console.log("++++++++ REDUCER TESTS +++++++++++++++");
+});
+
 beforeEach(() => {
     TEST_STATE = {
         loginReducer : {
