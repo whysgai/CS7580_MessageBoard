@@ -34,7 +34,7 @@ function App() {
                         <SearchTags />
                         <div className="card card-body list-group-flush">
                             {
-                                view === VIEW_STATE.LOGIN ?
+                                loginState === LOGIN_STATE.LOGGED_IN ?
                                     <NewThread />
                                     :
                                     <>

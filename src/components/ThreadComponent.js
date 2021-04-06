@@ -1,12 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
 import { LOGIN_STATE } from "../redux/storeConstants";
-import { showList } from "../redux/actions/viewActions"
+import { showList, showLogin } from "../redux/actions/viewActions"
 ;
 import Reply from "./Reply";
 import NewReply from "./NewReply";
 
 const ThreadComponent = () => {
     const dispatch = useDispatch();
+    const loginState = useSelector(state => state.loginReducer.loginState);
     const threads = useSelector(state => state.threads);
     const threadId = useSelector(state => state.viewReducer.singleId);
 
@@ -47,8 +48,14 @@ const ThreadComponent = () => {
                                 <p>Posted: {parseTimestamp(thread.timestamp)}</p>
                             </div>
                             <div className="list-group-item">
-
-                                <NewReply threadId={thread.id}/>
+                                {
+                                    loginState === LOGIN_STATE.LOGGED_IN ?
+                                        <NewReply threadId={thread.id}/>
+                                        :
+                                        <>
+                                            <button className="btn btn-success" onClick={() => dispatch(showLogin())}>Log In</button>
+                                        </>
+                                }
                             </div> 
                             {
                                 thread.replies.map((reply, index) =>
