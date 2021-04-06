@@ -1,7 +1,7 @@
 import {render} from "@testing-library/react";
 import {Provider} from "react-redux";
 import {createStore} from "redux";
-import {rootReducer} from "./store";
+import {rootReducer} from "../redux/store";
 
 const customRender = (ui, initialState = {}) => {
     const mockStore = createStore(rootReducer, initialState);
