@@ -14,10 +14,15 @@ const SearchTags = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (loginState === LOGIN_STATE.LOGGED_IN) {
-            dispatch(readAllThreads());
-        }
-    }, [loginState, dispatch]);
+        dispatch(readAllThreads());
+
+    }, [dispatch]);
+
+    // useEffect(() => {
+    //     if (loginState === LOGIN_STATE.LOGGED_IN) {
+    //         dispatch(readAllThreads());
+    //     }
+    // }, [loginState, dispatch]);
 
     useEffect(() => {
         if (search !== "") {
