@@ -1,6 +1,8 @@
-import { loginFail, loginNetworkError, loginSuccess, logout } from "../redux/actions/loginActions";
-import {} from "../redux/actions/viewActions";
-import {} from "../redux/actions/threadActions";
+import { loginFail, loginNetworkError, loginSuccess, logout, validateUser } from "../redux/actions/loginActions";
+import * as loginActions from "../redux/actions/loginActions";
+import { showList, showSingle } from "../redux/actions/viewActions";
+import * as viewActions from "../redux/actions/viewActions";
+import * as threadActions from "../redux/actions/threadActions";
 import { LOGIN_SUCCESS, INVALID_LOGIN, LOGOUT, LOGIN_NETWORK_ERROR, VIEW_LIST, VIEW_SINGLE, 
     READ_THREADS, ADD_REPLY } from "../redux/actionConstants";
 
@@ -38,15 +40,11 @@ test("Generate login error action", () => {
     expect(loginNetworkError()).toEqual(expectedAction);
 });
 // validate user
-test.skip("Generate login success action on valid user action", () => {
-    // Dependent on mock data
+test("Generate login success action on valid user action", () => {
+
     const user = {
-        id: "0",
-        username: "j_newbie",
-        firstname: "J",
-        lastname: "Newbie",
-        onboardingComplete: false,
-        hasUsedFilter: false
+        id: "001",
+        username: "apollo"
     }
 
     const expectedAction = {
@@ -56,7 +54,18 @@ test.skip("Generate login success action on valid user action", () => {
         }
     }
 
-    expect(validateUser("j_newbie", "1234")).toEqual(expectedAction);
+    jest.spyOn(loginActions, "validateUser").mockImplementation(() => ({
+        type: LOGIN_SUCCESS,
+        payload: {
+            user: {
+                id: "001",
+                username: "apollo"
+            }
+        }
+    }));
+
+
+    expect(validateUser("apollo", "1234")).toEqual(expectedAction);
 });
 // logout
 test("Generate logout success action", () => {
@@ -66,9 +75,31 @@ test("Generate logout success action", () => {
 
 //view actions
 // showList
-test.skip("Generate show list of threads action", () => {});
+test("Generate show list of threads action", () => {
+    const searchTags = ["#Battle", "#Star", "#Galactica"];
+
+    const expectedAction = {
+        type: VIEW_LIST,
+        payload: {
+            searchTags
+        }
+    };
+
+    expect(showList(searchTags)).toEqual(expectedAction);
+});
 // showSingle
-test.skip("Generate show single full thread action", () => {});
+test("Generate show single full thread action", () => {
+    const threadId = "Boomer";
+
+    const expectedAction = {
+        type: VIEW_SINGLE,
+        payload: {
+            threadId
+        }
+    };
+
+    expect(showSingle(threadId)).toEqual(expectedAction);
+});
 
 //thread actions
 // readAllThreads
