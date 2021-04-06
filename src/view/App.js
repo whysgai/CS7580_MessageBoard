@@ -7,6 +7,7 @@ import { showLogin } from "../redux/actions/viewActions"
 import { validateUser } from "../redux/actions/loginActions";
 import NewThread from "../components/NewThread";
 import SearchTags from "../components/SearchTags";
+import Login from "../components/Login";
 
 function App() {
     const dispatch = useDispatch();
@@ -21,46 +22,42 @@ function App() {
     //     }
     // }, [loginState]);
 
-    useEffect(() => {
-        dispatch(validateUser("originator", "1234"));
-    }, []);
+    // useEffect(() => {
+    //     dispatch(validateUser("originator", "1234"));
+    // }, []);
 
     return (
         <div className="App container">
             <p>hi { user !== null && user !== undefined ? user.id : "" }</p>
             {
-                view === VIEW_STATE.THREAD_LIST ?
-                    <>
-                        <SearchTags />
-                        <div className="card card-body list-group-flush">
-                            {
-                                loginState === LOGIN_STATE.LOGGED_IN ?
-                                    <NewThread />
-                                    :
-                                    <>
-                                        <button className="btn btn-success" onClick={() => dispatch(showLogin())}>Log In</button>
-                                    </>
-                            }
-                            <ThreadList />
-                        </div>                        
-                    </>                    
+                view === VIEW_STATE.LOGIN ?
+                    <Login />
                     :
                     <>{
-                        view === VIEW_STATE.SINGLE_THREAD ?
-                            <ThreadComponent />
+                        view === VIEW_STATE.THREAD_LIST ?
+                            <>
+                                <SearchTags />
+                                <div className="card card-body list-group-flush">
+                                    {
+                                        loginState === LOGIN_STATE.LOGGED_IN ?
+                                            <NewThread />
+                                            :
+                                            <>
+                                                <button className="btn btn-success" onClick={() => dispatch(showLogin())}>Log In</button>
+                                            </>
+                                    }
+                                    <ThreadList />
+                                </div>                        
+                            </>                    
                             :
                             <>{
-                                view === VIEW_STATE.LOGIN ?
-                                    <>
-                                        <p>Login component here</p>
-                                    </>
+                                view === VIEW_STATE.SINGLE_THREAD ?
+                                    <ThreadComponent />
                                     :
-                                    <p>Error: view set to {view}</p>
+                                    <p>Error: view set to {view}</p>                            
                             }</>
-                            
                     }</>
-            }
-            
+            }            
         </div>
     );
 }
