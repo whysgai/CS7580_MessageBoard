@@ -2,7 +2,7 @@ import { LOGIN_SUCCESS, INVALID_LOGIN, LOGIN_NETWORK_ERROR, LOGOUT } from "../ac
 import { LOGIN_STATE } from "../storeConstants";
 
 const INITIAL_STATE = {
-    loginState: LOGIN_STATE.LOGGED_IN
+    loginState: LOGIN_STATE.LOGGED_OUT
 };
 
 export const loginReducer = (state=INITIAL_STATE, action) => {

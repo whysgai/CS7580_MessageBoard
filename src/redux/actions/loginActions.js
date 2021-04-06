@@ -1,4 +1,5 @@
 import { LOGIN_SUCCESS, INVALID_LOGIN, LOGIN_NETWORK_ERROR, LOGOUT } from "../actionConstants";
+import { showList } from "./viewActions";
 import firebase from "../../fbConfig";
 
 const database = firebase.firestore();
@@ -35,6 +36,7 @@ export const validateUser = (username, password) => {
                     }
                     console.log("Action user:", user);
                     dispatch(loginSuccess(user));
+                    dispatch(showList([]));
                 } else {
                     console.log("Loginfail");
                     dispatch(loginFail());
