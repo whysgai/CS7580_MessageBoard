@@ -28,9 +28,7 @@ function App() {
 
     return (
         <div className="App container">
-            <p>hi { user !== null && user !== undefined ? user.id : "" }</p>
-            
-            
+            {/* <p>hi { user !== null && user !== undefined ? user.id : "" }</p> */} 
             {
                 view === VIEW_STATE.LOGIN ?
                     <Login />
