@@ -7,7 +7,8 @@ export const LOGIN_STATE = {
 
 export const VIEW_STATE = {
     THREAD_LIST: "thread_list",
-    SINGLE_THREAD: "single_thread"
+    SINGLE_THREAD: "single_thread",
+    LOGIN: "login"
 };
 
 // export const INITIAL_STATE = {

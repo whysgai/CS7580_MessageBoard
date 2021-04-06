@@ -6,3 +6,4 @@ export const READ_THREADS = "READ_THREADS";
 export const ADD_REPLY = "ADD_REPLY";
 export const VIEW_LIST = "VIEW_LIST";
 export const VIEW_SINGLE = "VIEW_SINGLE";
+export const VIEW_LOGIN = "VIEW_LOGIN";

@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import ThreadList from '../components/ThreadList';
 import ThreadComponent from "../components/ThreadComponent";
 import { LOGIN_STATE, VIEW_STATE } from "../redux/storeConstants";
-import { validateUser } from "../redux/actions/loginActions"
+import { showLogin } from "../redux/actions/viewActions"
+import { validateUser } from "../redux/actions/loginActions";
 import NewThread from "../components/NewThread";
 import SearchTags from "../components/SearchTags";
 
@@ -13,12 +14,16 @@ function App() {
     const user = useSelector(state => state.user);
     const view = useSelector(state => state.viewReducer.view);
 
+    // useEffect(() => {
+    //     console.log("loginState", loginState);
+    //     if (loginState === LOGIN_STATE.LOGGED_IN) {
+    //         dispatch(validateUser("originator", "1234"));
+    //     }
+    // }, [loginState]);
+
     useEffect(() => {
-        console.log("loginState", loginState);
-        if (loginState === LOGIN_STATE.LOGGED_IN) {
-            dispatch(validateUser("originator", "1234"));
-        }
-    }, [loginState]);
+        dispatch(validateUser("originator", "1234"));
+    }, []);
 
     return (
         <div className="App container">
@@ -28,7 +33,14 @@ function App() {
                     <>
                         <SearchTags />
                         <div className="card card-body list-group-flush">
-                            <NewThread />
+                            {
+                                view === VIEW_STATE.LOGIN ?
+                                    <NewThread />
+                                    :
+                                    <>
+                                        <button className="btn btn-success" onClick={() => dispatch(showLogin())}>Log In</button>
+                                    </>
+                            }
                             <ThreadList />
                         </div>                        
                     </>                    
@@ -37,7 +49,15 @@ function App() {
                         view === VIEW_STATE.SINGLE_THREAD ?
                             <ThreadComponent />
                             :
-                            <p>Error: view set to {view}</p>
+                            <>{
+                                view === VIEW_STATE.LOGIN ?
+                                    <>
+                                        <p>Login component here</p>
+                                    </>
+                                    :
+                                    <p>Error: view set to {view}</p>
+                            }</>
+                            
                     }</>
             }
             

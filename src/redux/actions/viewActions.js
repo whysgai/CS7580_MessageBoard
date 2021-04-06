@@ -1,4 +1,4 @@
-import { VIEW_LIST, VIEW_SINGLE } from "../actionConstants";
+import { VIEW_LIST, VIEW_SINGLE, VIEW_LOGIN } from "../actionConstants";
 
 export const showList = searchTags => ({
     type: VIEW_LIST,
@@ -12,4 +12,8 @@ export const showSingle = threadId => ({
     payload: {
         threadId
     }
+});
+
+export const showLogin = () => ({
+    type: VIEW_LOGIN
 });

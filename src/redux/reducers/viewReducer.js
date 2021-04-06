@@ -1,5 +1,5 @@
 import { VIEW_STATE } from "../storeConstants";
-import { VIEW_LIST, VIEW_SINGLE } from "../actionConstants";
+import { VIEW_LIST, VIEW_SINGLE, VIEW_LOGIN } from "../actionConstants";
 
 const INITIAL_STATE = {
     view: VIEW_STATE.THREAD_LIST,
@@ -22,6 +22,11 @@ export const viewReducer  = (state=INITIAL_STATE, action) => {
                 view: VIEW_STATE.SINGLE_THREAD,
                 singleId: action.payload.threadId 
             };
+        case VIEW_LOGIN:
+            return {
+                ...state,
+                view: VIEW_STATE.LOGIN,
+            }
         default:
             return state;
     };
