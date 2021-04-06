@@ -1,5 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
-import { showList } from "../redux/actions/viewActions";
+import { LOGIN_STATE } from "../redux/storeConstants";
+import { showList } from "../redux/actions/viewActions"
+;
 import Reply from "./Reply";
 import NewReply from "./NewReply";
 
@@ -45,6 +47,7 @@ const ThreadComponent = () => {
                                 <p>Posted: {parseTimestamp(thread.timestamp)}</p>
                             </div>
                             <div className="list-group-item">
+
                                 <NewReply threadId={thread.id}/>
                             </div> 
                             {

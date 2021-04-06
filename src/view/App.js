@@ -14,10 +14,11 @@ function App() {
     const view = useSelector(state => state.viewReducer.view);
 
     useEffect(() => {
-        if (loginState === LOGIN_STATE.LOGGED_OUT) {
+        console.log("loginState", loginState);
+        if (loginState === LOGIN_STATE.LOGGED_IN) {
             dispatch(validateUser("originator", "1234"));
         }
-    });
+    }, [loginState]);
 
     return (
         <div className="App container">
