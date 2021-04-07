@@ -7,9 +7,12 @@ const ThreadList = () => {
     return (
         <>
             {
-                threads.map((thread, index) => 
-                    <ThreadSnippet key={index} thread={thread}/>
-                )
+                threads.length > 0 ?
+                    threads.map((thread, index) => 
+                        <ThreadSnippet key={index} thread={thread}/>
+                    )
+                    :
+                    <p>No threads to display.</p>
             }
             
         </>
