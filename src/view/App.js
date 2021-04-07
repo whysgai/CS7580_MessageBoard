@@ -51,7 +51,7 @@ function App() {
                                             loginState === LOGIN_STATE.LOGGED_IN ?
                                                 <NewThread />
                                                 :
-                                                <div class="list-group-item">
+                                                <div className="list-group-item">
                                                     <p>Want to join the conversation? <button className="btn btn-success" onClick={() => dispatch(showLogin())}>Log In</button></p>
                                                 </div>
                                         }
