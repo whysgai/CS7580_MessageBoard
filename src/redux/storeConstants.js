@@ -17,7 +17,8 @@ export const INITIAL_STATE = {
     user: -1,
     threads: [],
     singleId: "",
-    searchTags: []
+    searchTags: [],
+    testState: false
 };
 
 // export const INITIAL_STATE = {

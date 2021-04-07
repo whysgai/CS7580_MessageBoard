@@ -4,14 +4,14 @@ import firebase from "../../fbConfig";
 
 const database = firebase.firestore();
 
-const readThreads = threads => ({
+export const readThreads = threads => ({
     type: READ_THREADS,
     payload: {
         threads
     }
 });
 
-const addReply = (threadId, reply) => ({
+export const addReply = (threadId, reply) => ({
     type: ADD_REPLY,
     payload: {
         threadId,

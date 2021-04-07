@@ -6,6 +6,7 @@ import { readAllThreads, readThreadByTag } from "../redux/actions/threadActions"
 const SearchTags = () => {
     const stateSearchTags = useSelector(state => state.viewReducer.searchTags);
     const loginState = useSelector(state => state.loginReducer.loginState);
+    const testState = useSelector(state => state.testState);
 
 
     const [search, setSearch] = useState("");
@@ -14,8 +15,10 @@ const SearchTags = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(readAllThreads());
-
+        console.log("testState", testState);
+        if (!testState) {
+            dispatch(readAllThreads());
+        }        
     }, [dispatch]);
 
     // useEffect(() => {
