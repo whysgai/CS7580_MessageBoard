@@ -5,6 +5,7 @@ const INITIAL_STATE = [];
 export const threadReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case READ_THREADS:
+            console.log("Setting threads in state", action.payload.threads);
             return [...action.payload.threads];
         case ADD_REPLY:
             const mergedReplies = [

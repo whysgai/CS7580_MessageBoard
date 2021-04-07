@@ -15,11 +15,15 @@ const SearchTags = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log("testState", testState);
-        if (!testState) {
-            dispatch(readAllThreads());
-        }        
+            dispatch(readAllThreads());   
     }, [dispatch]);
+
+    // useEffect(() => {
+    //     console.log("testState", testState);
+    //     if (!testState) {
+    //         dispatch(readAllThreads());
+    //     }        
+    // }, [dispatch]);
 
     // useEffect(() => {
     //     if (loginState === LOGIN_STATE.LOGGED_IN) {

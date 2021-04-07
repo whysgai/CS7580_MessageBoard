@@ -6,6 +6,7 @@ import { LOGIN_STATE, VIEW_STATE } from "../redux/storeConstants";
 import {} from "../redux/actionConstants";
 import * as loginActions from "../redux/actions/loginActions";
 import * as threadActions from "../redux/actions/threadActions";
+import { readThreads } from "../redux/actions/threadActions"
 import * as viewActions from "../redux/actions/viewActions";
 
 const INITIAL_STATE = {
@@ -67,17 +68,14 @@ test("Test that when users are not logged in, they can see threads but not post 
     const START_STATE = _.cloneDeep(INITIAL_STATE);
 
    // Overwrite the getTodos action, which calls the mock data
-    jest.spyOn(threadActions, "readThreads").mockImplementation(() => ({
-        type: READ_THREADS,
-        payload: {
-            todos: _.cloneDeep(SAMPLE_THREADS)
-        }
-    }));
+    jest.spyOn(threadActions, "readAllThreads").mockImplementation(() => {
+        readThreads(_.cloneDeep(SAMPLE_THREADS));
+    });
 
     render(<App/>, START_STATE);
 
     // expect(screen.getByText("Do something")).toBeTruthy();
-    expect(screen.findAllByText("Author")).toHaveLength(3);
+    expect(screen.getByText("Groucho")).toBeTruthy();
 });
 
 // When a logged in user creates a post it is displayed

@@ -43,6 +43,7 @@ beforeEach(() => {
         loginReducer : {
             loginState: LOGIN_STATE.LOGGED_OUT
         },
+        testState: true,
         user: -1,
         threads: [],
         viewReducer: {
@@ -71,6 +72,7 @@ test("Logging in updates login state", () =>{
         loginReducer : {
             loginState: LOGIN_STATE.LOGGED_IN
         },
+        testState: true,
         user: 1,
         threads: [],
         viewReducer: {
@@ -92,6 +94,7 @@ test("Invalid login updates login state", () =>{
         loginReducer : {
             loginState: LOGIN_STATE.INVALID_LOGIN
         },
+        testState: true,
         user: -1,
         threads: [],
         viewReducer: {
@@ -113,6 +116,7 @@ test("Login error updates login state", () =>{
         loginReducer : {
             loginState: LOGIN_STATE.NETWORK_ERROR
         },
+        testState: true,
         user: -1,
         threads: [],
         viewReducer: {
@@ -130,6 +134,7 @@ test("Logging out updates login state", () =>{
         loginReducer : {
             loginState: LOGIN_STATE.LOGGED_IN
         },
+        testState: true,
         user: 1,
         threads: [],
         viewReducer: {
@@ -147,6 +152,7 @@ test("Logging out updates login state", () =>{
         loginReducer : {
             loginState: LOGIN_STATE.LOGGED_OUT
         },
+        testState: true,
         user: {},
         threads: [],
         viewReducer: {
@@ -297,6 +303,7 @@ test("Setting the view to single populates state info", () =>{
         loginReducer : {
             loginState: LOGIN_STATE.LOGGED_OUT
         },
+        testState: true,
         user: -1,
         threads: [],
         viewReducer: {
@@ -330,6 +337,7 @@ test("Setting the view to list populates state info", () =>{
         loginReducer : {
             loginState: LOGIN_STATE.LOGGED_OUT
         },
+        testState: true,
         user: -1,
         threads: [],
         viewReducer: {
@@ -358,6 +366,7 @@ test("Login populates user info", () =>{
         loginReducer : {
             loginState: LOGIN_STATE.LOGGED_IN
         },
+        testState: true,
         user: {
             id: "Snoopy"
         },
@@ -377,6 +386,7 @@ test("Logout removes user info", () =>{
         loginReducer : {
             loginState: LOGIN_STATE.LOGGED_IN
         },
+        testState: true,
         user: {
             id: "Linus"
         },
@@ -396,6 +406,7 @@ test("Logout removes user info", () =>{
         loginReducer : {
             loginState: LOGIN_STATE.LOGGED_OUT
         },
+        testState: true,
         user: {},
         threads: [],
         viewReducer: {
