@@ -28,7 +28,7 @@ function App() {
 
     return (
         <div className="App container">
-            <p>hi { user !== null && user !== undefined ? user.id : "" }</p>
+            {/* <p>hi { user !== null && user !== undefined ? user.id : "" }</p> */}
             
             
             {
@@ -36,12 +36,12 @@ function App() {
                     <Login />
                     :
                     <>
-                        <div>{
+                        <nav className="navbar">{
                             loginState !== LOGIN_STATE.LOGGED_IN ?
-                                <button className="btn btn-success" onClick={() => dispatch(showLogin())}>Log In</button>
+                                <button className="btn btn-success heading-button" onClick={() => dispatch(showLogin())}>Log In</button>
                                 :
-                                <button className="btn btn-secondary" onClick={() => dispatch(logout())}>Log Out</button>
-                        }</div>
+                                <button className="btn btn-secondary heading-button" onClick={() => dispatch(logout())}>Log Out</button>
+                        }</nav>
                         {
                             view === VIEW_STATE.THREAD_LIST ?
                                 <>
@@ -51,9 +51,9 @@ function App() {
                                             loginState === LOGIN_STATE.LOGGED_IN ?
                                                 <NewThread />
                                                 :
-                                                <>
-                                                    <button className="btn btn-success" onClick={() => dispatch(showLogin())}>Log In</button>
-                                                </>
+                                                <div class="list-group-item">
+                                                    <p>Want to join the conversation? <button className="btn btn-success" onClick={() => dispatch(showLogin())}>Log In</button></p>
+                                                </div>
                                         }
                                         <ThreadList />
                                     </div>                        
