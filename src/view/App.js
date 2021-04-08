@@ -28,6 +28,8 @@ function App() {
 
     return (
         <div className="App container">
+            {console.log("loginState equals", loginState)}
+            {console.log("User equals", user)}
             {/* <p>hi { user !== null && user !== undefined ? user.id : "" }</p> */} 
             {
                 view === VIEW_STATE.LOGIN ?

@@ -1,6 +1,6 @@
 import { _ } from "lodash";
 import { rootReducer } from "../redux/store";
-import { INITIAL_STATE, LOGIN_STATE, VIEW_STATE, THREAD_LIST, SINGLE_THREAD } from "../redux/storeConstants";
+import { LOGIN_STATE, VIEW_STATE } from "../redux/storeConstants";
 import { LOGIN_SUCCESS, INVALID_LOGIN, LOGOUT, LOGIN_NETWORK_ERROR, VIEW_LIST, VIEW_SINGLE, 
     READ_THREADS, ADD_REPLY } from "../redux/actionConstants";
 
@@ -33,10 +33,6 @@ const SAMPLE_THREADS = [
         title: "Second"
     }
 ];
-
-beforeAll(() => {
-    //console.log("++++++++ REDUCER TESTS +++++++++++++++");
-});
 
 beforeEach(() => {
     TEST_STATE = {

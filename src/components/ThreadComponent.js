@@ -21,7 +21,7 @@ const ThreadComponent = () => {
     const parseTags = (rawBody) => {
         let parsedBody =  rawBody.split(" ").map((word, index) => 
             word.charAt(0) === "#" ?
-                <a className="tag" href="#" onClick={() => dispatch(showList(word))} key={index}>{word}</a>
+                <a className="tag" href="#" value={word} onClick={() => dispatch(showList(word))} key={index}>{word}</a>
                 :
                 word        
         );

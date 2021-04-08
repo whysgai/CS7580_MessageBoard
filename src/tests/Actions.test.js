@@ -2,7 +2,6 @@ import { _ } from "lodash";
 import { loginFail, loginNetworkError, loginSuccess, logout, validateUser } from "../redux/actions/loginActions";
 import * as loginActions from "../redux/actions/loginActions";
 import { showList, showSingle } from "../redux/actions/viewActions";
-import * as viewActions from "../redux/actions/viewActions";
 import { readAllThreads, readThreadByID, readThreadByTag, createThread, createReply } from "../redux/actions/threadActions";
 import * as threadActions from "../redux/actions/threadActions";
 import { LOGIN_SUCCESS, INVALID_LOGIN, LOGOUT, LOGIN_NETWORK_ERROR, VIEW_LIST, VIEW_SINGLE, 
@@ -37,9 +36,6 @@ const SAMPLE_THREADS = [
     }
 ];
 
-beforeAll(() => {
-    //console.log("++++++++ ACTION TESTS +++++++++++++++");
-});
 
 //login actions
 // login success
