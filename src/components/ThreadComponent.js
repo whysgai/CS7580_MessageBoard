@@ -41,8 +41,10 @@ const ThreadComponent = () => {
                     <div className="card card-body" key={index}>
                         <div className="list-group-flush">
                             <div className="list-group-item">
-                                <p>{thread.title}</p>
-                                <button type="button" className="btn-close" aria-label="Close" onClick={() => dispatch(showList(""))}/>
+                                <div className="thread-title-box">
+                                    <h3>{thread.title}</h3>
+                                    <button type="button" className="btn-close" aria-label="Close" onClick={() => dispatch(showList(""))}/>
+                                </div>                                
                                 <p>Author: {thread.author}</p>
                                 <p>{parseTags(thread.body)}</p>
                                 <p>Posted: {parseTimestamp(thread.timestamp)}</p>
@@ -53,7 +55,7 @@ const ThreadComponent = () => {
                                         <NewReply threadId={thread.id}/>
                                         :
                                         <>
-                                            <button className="btn btn-success" onClick={() => dispatch(showLogin())}>Log In</button>
+                                            <p>Want to join the conversation? <button className="btn btn-success" onClick={() => dispatch(showLogin())}>Log In</button></p>
                                         </>
                                 }
                             </div> 

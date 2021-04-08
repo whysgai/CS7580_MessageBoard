@@ -1,3 +1,9 @@
+.navbar {
+    width: 100%;
+    margin-bottom: 2vh;
+    display: flex;
+    justify-content: flex-end;
+}
 
 .start-thread-submit{
     float: right;
@@ -5,6 +11,12 @@
 
 .thread-title {
     text-decoration: none;
+}
+
+.thread-title-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 @media (max-width: 450px) {
