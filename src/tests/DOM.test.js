@@ -177,7 +177,6 @@ test("Test that clicking a tag searches for threads with that tag", ()=>{
 
     // get honk link
     const honkTag = screen.getAllByText("#honk")[0];
-    console.log("Honk tag", honkTag);
 
     let newThreads = _.cloneDeep(SAMPLE_THREADS);
     // jest spy readThreadById

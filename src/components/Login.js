@@ -41,7 +41,6 @@ const Login = () => {
                 !editingBegun && loginState === LOGIN_STATE.NETWORK_ERROR &&
                     <div className="alert alert-danger">Unable to connect to the server. Please check your internet connection.</div>
             }
-            {console.log("login state from login component", loginState)}
             <div className="row my-4 add-form">
                 <div className="col-12 col-sm-2">
                     <label htmlFor="username" className="form-label">Username:</label>

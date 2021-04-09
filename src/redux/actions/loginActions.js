@@ -24,7 +24,6 @@ export const logout = () => ({
 });
 
 export const validateUser = (username, password) => {
-    console.log("Calling validateUser");
     return dispatch => {
         database.collection("users").where("username", "==", username).where("password", "==", password)
             .get()
@@ -34,11 +33,10 @@ export const validateUser = (username, password) => {
                     const user = {
                         id: doc.id
                     }
-                    console.log("Action user:", user);
                     dispatch(loginSuccess(user));
                     dispatch(showList([]));
                 } else {
-                    console.log("Loginfail");
+                    console.log("Login failure");
                     dispatch(loginFail());
                 }
             })

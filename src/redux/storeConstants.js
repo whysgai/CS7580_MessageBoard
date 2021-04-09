@@ -20,16 +20,3 @@ export const INITIAL_STATE = {
     searchTags: [],
     testState: false
 };
-
-// export const INITIAL_STATE = {
-//     loginState: LOGIN_STATE.LOGGED_IN,
-//     view: VIEW_STATE.THREAD_LIST,
-//     user: {
-//         id: "ObjU6WstIoYloXphN590",
-//         username: "originator",
-//         password: "1234"
-//     },
-//     threads: [],
-//     singleId: "",
-//     searchTags: []
-// }

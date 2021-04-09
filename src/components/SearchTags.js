@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { LOGIN_STATE } from "../redux/storeConstants";
 import { readAllThreads, readThreadByTag } from "../redux/actions/threadActions";
 
 const SearchTags = () => {
     const stateSearchTags = useSelector(state => state.viewReducer.searchTags);
-    const loginState = useSelector(state => state.loginReducer.loginState);
-    const testState = useSelector(state => state.testState);
-
 
     const [search, setSearch] = useState("");
     console.log("Search now equals", search);
@@ -17,19 +13,6 @@ const SearchTags = () => {
     useEffect(() => {
             dispatch(readAllThreads());   
     }, [dispatch]);
-
-    // useEffect(() => {
-    //     console.log("testState", testState);
-    //     if (!testState) {
-    //         dispatch(readAllThreads());
-    //     }        
-    // }, [dispatch]);
-
-    // useEffect(() => {
-    //     if (loginState === LOGIN_STATE.LOGGED_IN) {
-    //         dispatch(readAllThreads());
-    //     }
-    // }, [loginState, dispatch]);
 
     useEffect(() => {
         if (search !== "") {
