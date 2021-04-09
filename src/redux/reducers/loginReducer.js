@@ -10,6 +10,7 @@ export const loginReducer = (state=INITIAL_STATE, action) => {
         case LOGIN_SUCCESS:
             return { loginState: LOGIN_STATE.LOGGED_IN }
         case INVALID_LOGIN:
+            console.log("Invalid login!!!!!!")
             return {loginState: LOGIN_STATE.INVALID_LOGIN }
         case LOGIN_NETWORK_ERROR:
             return {loginState: LOGIN_STATE.NETWORK_ERROR }
